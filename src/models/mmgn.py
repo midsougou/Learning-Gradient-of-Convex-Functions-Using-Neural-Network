@@ -21,8 +21,7 @@ class M_MGN(nn.Module):
         self.activations = nn.ModuleList([nn.Tanh() for _ in range(num_layers)])
 
         # V^T V term (PSD by construction)
-        self.V = nn.Linear(hidden_dim, input_dim, bias=False)  # Shape: [input_dim, input_dim]
-        nn.init.orthogonal_(self.V.weight)  # Initialize V to be orthogonal
+        self.V = nn.Parameter(torch.randn(hidden_dim, input_dim))  # Shape: [hideen_dim, input_dim]
 
         # Bias term (a)
         self.a = nn.Parameter(torch.randn(output_dim))  # Learned bias
@@ -35,14 +34,13 @@ class M_MGN(nn.Module):
         out = self.a.unsqueeze(0).expand(batch_size, -1)  # Shape: [batch_size, input_dim]
 
         # Add V^T V x term (ensures PSD Jacobian)
-        V_sq = self.V.weight.t() @ self.V.weight  # Shape: [input_dim, input_dim]
-        out = out + x @ V_sq  # Shape: [batch_size, input_dim]
+        V_sq = self.V.t() @ self.V  # Shape: [input_dim, input_dim]
+        out = out + x@ V_sq  # Shape: [batch_size, input_dim]
 
         # Loop over modules and compute terms
         for k in range(self.num_layers):
             # Compute z_k = W_k x + b_k
             z_k = self.W_k[k](x)  # Shape: [batch_size, hidden_dim]
-
             # Compute s_k(z_k) = sum_i log(cosh(z_k_i)) (scalar per sample)
             s_k = torch.sum(torch.log(torch.cosh(z_k)), dim=1)  # Shape: [batch_size]
 

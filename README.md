@@ -8,7 +8,7 @@ This repository contains the implementation of the paper "Learning Gradients of 
 The goal of this section is to learn an optimal transport map $T$ that pushes forward samples from the source distribution $\alpha$ to a standard normal distribution $\beta$ 
 
 <p align="center">
-    <img src="src/figures/experiments/coupling_cmgn.png" width=80%>
+    <img src="src/experiments/figures/coupling_cmgn.png" width=80%>
 </p>
 
 This animation shows how the samples are transported through the different epochs

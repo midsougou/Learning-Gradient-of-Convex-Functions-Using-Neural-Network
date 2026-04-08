@@ -1,13 +1,20 @@
 # Learning-Gradient-of-Convex-Functions-Using-Neural-Network
-This repository contains the implementation of the paper "Learning Gradients of Convex Functions with Monotone Gradient Networks". The paper introduces two new neural architectures that helps in learning gradient of convex functions. This has also an utility in optimal transport domain mainly the Brenier Map Theorem.
+This repository contains the implementation of the paper "Learning Gradients of Convex Functions with Monotone Gradient Networks". The paper introduces two new neural architectures that helps in learning gradient of convex functions. This has also an utility in optimal transport domain mainly the Brenier Map Theorem as well as taking advantage of the Change of Variable formula.
 
 
 ## Optimal Coupling
 
+
 The goal of this section is to learn an optimal transport map $T$ that pushes forward samples from the source distribution $\alpha$ to a standard normal distribution $\beta$ 
+
 <p align="center">
-    <img src="src/experiments/cmgn_training_flow.gif" width="45%" >
-    <img src="src/experiments/cmgn_training_flow_fixed_axes.gif" width="45%" >
+    <img src="src/experiments/coupling_cmgn.png" width=80%>
+</p>
+
+This animation shows how the samples are transported through the different epochs
+<p align="center">
+    <!-- <img src="src/experiments/cmgn_training_flow.gif" width="45%" > -->
+    <img src="src/experiments/cmgn_training_flow_fixed_axes.gif" width="50%" >
 
 </p>
 

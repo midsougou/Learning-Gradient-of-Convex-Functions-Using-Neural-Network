@@ -29,5 +29,5 @@ One interesting application of the proposed networks is to learn to map daytime 
 The following animation shows how the process of transporting colors is done throughout the training
 
 <p align="center">
-<img src="src/experiments/figures/color_domain_adaptation_cmgn_training.gif" width="60%" >
+<img src="src/experiments/figures/compressed_color_domain_adaptation_cmgn_training.gif" width="60%" >
 </p>
